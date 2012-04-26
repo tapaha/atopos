@@ -83,7 +83,7 @@
 				bandInfos[1].eventPainter.setLayout(bandInfos[0].eventPainter.getLayout());
 
 				tl = Timeline.create(document.getElementById("my-timeline"), bandInfos);
-				Timeline.loadXML("example1.xml", function(xml, url) {
+				Timeline.loadXML("schedule.xml", function(xml, url) {
 					eventSource.loadXML(xml, url);
 				});
 			}
