@@ -1,0 +1,20 @@
+<data>
+    <event 
+        start="Apr 26 2012 00:00:00 GMT"
+        end="Apr 30 2012 22:00:00 GMT"
+        isDuration="true"
+        title="개발환경 구축"
+        image="http://simile.mit.edu/images/csail-logo.gif"
+        >
+        깃헙 아토포스 레파지토리에 협업자가 되어 주세요. &lt;a href="https://github.com/ThinkinGim/atopos/"&gt;ATOPOS.github&lt;/a&gt;.
+        </event>
+        
+    <event 
+        start="Apr 28 2012 19:00:00 GMT"
+        end="Apr 28 2012 23:00:00 GMT"
+        title="ATOPOS SIG(2th)"
+        >
+        ATOPOS 2차 정기 SIG 모임
+        </event>
+    
+</data>
