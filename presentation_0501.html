@@ -1,0 +1,292 @@
+<!doctype html>
+
+<html lang="kr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>impress.js | presentation tool based on the power of CSS3 transforms and transitions in modern browsers | by Bartek Szopka @bartaz</title>
+    
+    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
+
+    <link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb' rel='stylesheet' type='text/css' />
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['자기자금(내부자금 외)', 7.5],
+          ['자기자금(내부자금)', 31.2],
+          ['타인자금(장/단기 차입자금)', 36.7],
+          ['타인자금(회사채)', 6.5],
+          ['타인자금(매입채무/기타)', 24.5]
+        ]);
+        var options = {'title':'대기업 > 1977~1987',
+                       'width':430,
+                       'height':330};
+                       
+        var data1 = new google.visualization.DataTable();
+        data1.addColumn('string', 'Topping');
+        data1.addColumn('number', 'Slices');
+        data1.addRows([
+          ['자기자금(내부자금 외)', 4.6],
+          ['자기자금(내부자금)', 46.4],
+          ['타인자금(장/단기 차입자금)', 36.9],
+          ['타인자금(회사채)', 10.7],
+          ['타인자금(매입채무/기타)', 16.7]
+        ]);
+        var options1 = {'title':'1988~1977',
+                       'width':430,
+                       'height':330};
+                       
+        var data2 = new google.visualization.DataTable();
+        data2.addColumn('string', 'Topping');
+        data2.addColumn('number', 'Slices');
+        data2.addRows([
+          ['자기자금(내부자금 외)', 7.2],
+          ['자기자금(내부자금)', 30.5],
+          ['타인자금(장/단기 차입자금)', 34.3],
+          ['타인자금(회사채)', 2],
+          ['타인자금(매입채무/기타)', 25.5]
+        ]);
+        var options2 = {'title':'중소기업 > 1977~1987',
+                       'width':430,
+                       'height':330};
+                       
+        var data3 = new google.visualization.DataTable();
+        data3.addColumn('string', 'Topping');
+        data3.addColumn('number', 'Slices');
+        data3.addRows([
+          ['자기자금(내부자금 외)', 6.3],
+          ['자기자금(내부자금)', 34.2],
+          ['타인자금(장/단기 차입자금)', 35.4],
+          ['타인자금(회사채)', 1.1],
+          ['타인자금(매입채무/기타)', 24.1]
+        ]);
+        var options3 = {'title':'1988~1977',
+                       'width':430,
+                       'height':330};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+        var chart1 = new google.visualization.PieChart(document.getElementById('chart_div1'));
+        chart1.draw(data1, options1);
+        var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+        chart2.draw(data2, options2);
+        var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));
+        chart3.draw(data3, options3);
+      }
+    </script>
+</head>
+
+<!--
+    
+    Body element is used by impress.js to set some useful class names, that will allow you to detect
+    the support and state of the presentation in CSS or other scripts.
+    
+    First very useful class name is `impress-not-supported`. This class means, that browser doesn't
+    support features required by impress.js, so you should apply some fallback styles in your CSS.
+    It's not necessary to add it manually on this element. If the script detects that browser is not
+    good enough it will add this class, but keeping it in HTML means that users without JavaScript
+    will also get fallback styles.
+    
+    When impress.js script detects that browser supports all required features, this class name will
+    be removed.
+    
+    The class name on body element also depends on currently active presentation step. More details about
+    it can be found later, when `hint` element is being described.
+    
+-->
+<body class="impress-not-supported">
+
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<!--
+    
+    Now that's the core element used by impress.js.
+    
+    That's the wrapper for your presentation steps. In this element all the impress.js magic happens.
+    It doesn't have to be a `<div>`. Only `id` is important here as that's how the script find it.
+    
+    You probably won't need it now, but there are some configuration options that can be set on this element.
+    
+    To change the duration of the transition between slides use `data-transition-duration="2000"` giving it
+    a number of ms. It defaults to 1000 (1s).
+    
+    You can also control the perspective with `data-perspective="500"` giving it a number of pixels.
+    It defaults to 1000. You can set it to 0 if you don't want any 3D effects.
+    If you are willing to change this value make sure you understand how CSS perspective works:
+    https://developer.mozilla.org/en/CSS/perspective
+    
+    But as I said, you won't need it for now, so don't worry - there are some simple but interesing things
+    right around the corner of this tag ;)
+    
+-->
+<div id="impress">
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="1">
+        <span class="try">성장금융체제 하에서 </span>
+        <h1>기업의 자금조달과 재무구조<sup>*</sup></h1>
+    </div>
+    
+    <div id="bored" class="step slide" data-x="-1500" data-y="1000" style="padding:10px;">
+        <div id="chart_div" style="float:left"></div>
+        <div id="chart_div1" style="float:right"></div>
+        <div id="chart_div2" style="float:left"></div>
+        <div id="chart_div3" style="float:right"></div>
+    </div>
+    
+    <div class="step" data-x="0" data-y="1000" data-scale="2">
+        <img src="img/pic1.png" style="width:100%;"/>
+    </div>
+    
+    <div class="step slide" data-x="1500" data-y="1000">
+        <ul style="line-height: 4">
+        	<li>주식자금 조달비중은 고정투자 자금소요와는 무관</li>
+        	<li style="line-height:2">내부자금 조달비중과 유의성이 높고 <br />
+        		&nbsp;동 회귀계수값은 <b>0.18</b>정도, 안정적</li>
+        </ul>
+        <p style="width:500px; margin:50px auto; line-height:2; font-size:1.2em"><strong>내부자금 조달이 원활할수록 <br />
+        	 주식발행을 통해서 <br />
+        	 높은 비율로 조달</strong></p>
+    </div>
+
+    <div id="its" class="step" data-x="850" data-y="4000" data-rotate="90" data-scale="3">
+        <p><strong>저금리</strong>정책에 따른  초과자금 수요 <br/><br/>
+        대기업 중심의 <strong>신용할당체계 </strong><br/><br />
+        -> 중소기업은 구조적인 자금공급 문제<br />
+        &nbsp; 기회를 실행으로 옮기지 못하는 경험
+         </p>
+    </div>
+
+    <div id="overview" class="step" data-x="0" data-y="2000" data-scale="7">
+    </div>
+
+</div>
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<!--
+    
+    Last, but not least.
+    
+    To make all described above really work, you need to include impress.js in the page.
+    I strongly encourage to minify it first.
+    
+    In here I just include full source of the script to make it more readable.
+    
+    You also need to call a `impress().init()` function to initialize impress.js presentation.
+    And you should do it in the end of your document. Not only because it's a good practice, but also
+    because it should be done when the whole document is ready.
+    Of course you can wrap it in any kind of "DOM ready" event, but I was too lazy to do so ;)
+    
+-->
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+<!--
+    
+    The `impress()` function also gives you access to the API that controls the presentation.
+    
+    Just store the result of the call:
+    
+        var api = impress();
+    
+    and you will get three functions you can call:
+    
+        `api.init()` - initializes the presentation,
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation,
+        `api.goto( idx | id | element, [duration] )` - moves the presentation to the step given by its index number
+                id or the DOM element; second parameter can be used to define duration of the transition in ms,
+                but it's optional - if not provided default transition duration for the presentation will be used.
+    
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+    
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+    
+-->
+
+</body>
+</html>
+
+<!--
+    
+    Now you know more or less everything you need to build your first impress.js presentation, but before
+    you start...
+    
+    Oh, you've already cloned the code from GitHub?
+    
+    You have it open in text editor?
+    
+    Stop right there!
+    
+    That's not how you create awesome presentations. This is only a code. Implementation of the idea that
+    first needs to grow in your mind.
+    
+    So if you want to build great presentation take a pencil and piece of paper. And turn off the computer.
+    
+    Sketch, draw and write. Brainstorm your ideas on a paper. Try to build a mind-map of what you'd like
+    to present. It will get you closer and closer to the layout you'll build later with impress.js.
+    
+    Get back to the code only when you have your presentation ready on a paper. It doesn't make sense to do
+    it earlier, because you'll only waste your time fighting with positioning of useless points.
+    
+    If you think I'm crazy, please put your hands on a book called "Presentation Zen". It's all about 
+    creating awesome and engaging presentations.
+    
+    Think about it. 'Cause impress.js may not help you, if you have nothing interesting to say.
+    
+-->
+
+<!--
+    
+    Are you still reading this?
+    
+    For real?
+    
+    I'm impressed! Feel free to let me know that you got that far (I'm @bartaz on Twitter), 'cause I'd like
+    to congratulate you personally :)
+    
+    But you don't have to do it now. Take my advice and take some time off. Make yourself a cup of coffee, tea,
+    or anything you like to drink. And raise a glass for me ;)
+    
+    Cheers!
+    
+-->
+
