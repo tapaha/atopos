@@ -305,10 +305,6 @@ a:focus {
     text-align: center;
 }
 
-/*
-    This step has some animated text ...
-*/
-#ing { width: 500px }
 
 /*
     ... so we define display to `inline-block` to enable transforms and
@@ -372,6 +368,53 @@ a:focus {
 /*
     The 'imagination' step is again some boring font-sizing.
 */
+
+.stakeholder {
+	width:1024px;
+	height:768px;
+}
+
+.stakeholder h3 {
+	float:right;
+	margin:180px -380px 0 0;
+	border-style:groove;
+	width:500px;
+	text-align:center;
+}
+
+.arrow {
+	border-style: dashed;
+  	border-color: transparent;
+  	border-width: 0.53em;
+  	display: -moz-inline-box;
+  	display: inline-block;
+ 	/* Use font-size to control the size of the arrow. */
+ 	font-size: 0.6em;
+ 	vertical-align: middle;
+ 	margin:0 10px;
+	
+}
+.stakeholder p ul {
+	font-size:0.4em;
+	color:#666;
+}
+.stakeholder strong {
+	color:#CD0000;
+}
+
+.arrow-n {
+	border-bottom-width: 1em;
+	border-bottom-style: solid;
+	border-bottom-color: #666;
+	bottom: 0.25em;	
+}
+
+.arrow-s {
+	border-top-width: 1em;
+	border-top-style: solid;
+ 	border-top-color: #CD0000;
+ 	
+}
 
 #imagination {
     width: 600px;

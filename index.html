@@ -112,9 +112,43 @@
     <div class="step slide" data-x="1500" data-y="-1300">
         <q>Would you like to <strong>impress your audience</strong> with <strong>stunning visualization</strong> of your talk?</q>
     </div>
+    
+    <div id="light-user" class="step stakeholder" data-x="2600" data-y="-1500" data-rotate="-90">
+        <h3 style="-webkit-transform:rotate(-70deg); border-bottom-width: thick; margin-top:250px;">
+        	<sapn class="arrow arrow-s" style="margin-bottom:-70px;"></sapn>(light) User<sapn class="arrow arrow-n"></sapn>
+       	</h3>
+        <p>
+        	<ul>
+        		<li><strong>| 피드백</strong></li>
+        	</ul>
+        </p>
+    </div>
+    
+    <div id="prosumer" class="step stakeholder" data-x="3200" data-y="-1500" data-rotate="-90" style="border-top:thick groove #666;">
+        <h3 style="-webkit-transform:rotate(70deg); border-top-width: thick; margin-left:100px ">
+        	<sapn class="arrow arrow-n"></sapn>Prosumer<sapn class="arrow arrow-s" style="margin-top:-70px;"></sapn>
+        </h3>
+        <p>
+        	<sapn class="arrow arrow-s" style="margin:-150px 0 0 200px;"></sapn>
+        	<sapn class="arrow arrow-n" style="margin:-180px 0 0 400px;"></sapn>
+        	<ul>
+        		<li></li>
+        	</ul>
+        </p>
+    </div>
+    
+    <div id="service-provider" class="step stakeholder" data-x="2800" data-y="-2900" data-rotate="-90">
+        <h3 style="-webkit-transform:rotate(-90deg); float: left; margin:300px 0 0 -400px;">Platform Provider</h3>
+         <p>
+        	<ul>
+        		<li>ㅎㅎㅎ</li>
+        	</ul>
+        </p>
+    </div>
 
-    <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
+    <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="1">
         <p>visualize your <b>big</b> <span class="thoughts">thoughts</span></p>
+        <p>by <b class="positioning">positioning</b>, <b class="rotating">rotating</b> and <b class="scaling">scaling</b> them on an infinite canvas</p>
     </div>
 
     <!--
@@ -150,9 +184,7 @@
         Only one current step has the `present` class.
         
     -->
-    <div id="ing" class="step" data-x="3500" data-y="-850" data-rotate="270" data-scale="6">
-        <p>by <b class="positioning">positioning</b>, <b class="rotating">rotating</b> and <b class="scaling">scaling</b> them on an infinite canvas</p>
-    </div>
+    
 
     <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
         <p>the only <b>limit</b> is your <b class="imagination">imagination</b></p>
@@ -214,7 +246,9 @@ if ("ontouchstart" in document.documentElement) {
 </script>
 
 <script src="js/impress.js"></script>
-<script>impress().init();</script>
+<script>
+	impress().init();
+</script>
 
 <!--
     
